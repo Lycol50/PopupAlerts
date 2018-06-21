@@ -102,7 +102,7 @@ class Main extends PluginBase implements Listener{
 		$player = $event->getPlayer();
 		if($cfg["Join"]["show-popup"] == true){
 			$msg = CustomAlerts::getAPI()->getJoinMessage();
-			$this->getServer()->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["Join"]["duration"]), 10);
+			$this->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["Join"]["duration"]), 10);
 			if($cfg["Join"]["hide-default"] == true){
 				CustomAlerts::getAPI()->setJoinMessage("");
 			}
@@ -114,7 +114,7 @@ class Main extends PluginBase implements Listener{
 		$player = $event->getPlayer();
 		if($cfg["Quit"]["show-popup"] == true){
 			$msg = CustomAlerts::getAPI()->getQuitMessage();
-			$this->getServer()->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["Quit"]["duration"]), 10);
+			$this->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["Quit"]["duration"]), 10);
 			if($cfg["Quit"]["hide-default"] == true){
 				CustomAlerts::getAPI()->setQuitMessage("");
 			}
@@ -127,7 +127,7 @@ class Main extends PluginBase implements Listener{
 			$player = $event->getPlayer();
 			if($cfg["WorldChange"]["show-popup"] == true){
 				$msg = CustomAlerts::getAPI()->getWorldChangeMessage();
-				$this->getServer()->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["WorldChange"]["duration"]), 10);
+				$this->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["WorldChange"]["duration"]), 10);
 				if($cfg["WorldChange"]["hide-default"] == true){
 					CustomAlerts::getAPI()->setWorldChangeMessage("");
 				}
@@ -140,7 +140,7 @@ class Main extends PluginBase implements Listener{
 		$player = $event->getPlayer();
 		if($cfg["Death"]["show-popup"] == true){
 			$msg = CustomAlerts::getAPI()->getDeathMessage();
-			$this->getServer()->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["Death"]["duration"]), 10);
+			$this->getScheduler()->scheduleRepeatingTask(new MessageTask($this, $msg, $cfg["Death"]["duration"]), 10);
 			if($cfg["Death"]["hide-default"] == true){
 				CustomAlerts::getAPI()->setDeathMessage("");
 			}
