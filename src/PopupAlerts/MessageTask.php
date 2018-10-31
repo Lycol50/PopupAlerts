@@ -11,9 +11,10 @@
 
 namespace PopupAlerts;
 
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
+use pocketmine\utils\TextFormat;
 
-class MessageTask extends PluginTask{
+class MessageTask extends Task{
 
 	private $plugin;
 	private $message;
@@ -21,7 +22,6 @@ class MessageTask extends PluginTask{
 	private $current;
 
 	public function __construct(Main $plugin, $message, $duration){
-		parent::__construct($plugin);
 		$this->plugin = $plugin;
 		$this->message = $message;
 		$this->duration = $duration;
@@ -29,13 +29,12 @@ class MessageTask extends PluginTask{
 	}
 
 	public function onRun(int $tick){
-		$this->plugin = $this->getOwner();
 		if($this->current <= $this->duration){
 			foreach($this->plugin->getServer()->getOnlinePlayers() as $players){
-				$players->sendPopup($this->plugin->translateColors("&", $this->message));
+				$players->sendPopup(TextFormat::colorize($this->message, "&"));
 			}
 		}else{
-			$this->plugin->getServer()->getScheduler()->cancelTask($this->getTaskId());
+			$this->plugin->getScheduler()->cancelTask($this->getTaskId());
 		}
 		$this->current += 1;
 	}
