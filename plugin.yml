@@ -1,8 +1,10 @@
 name: PopupAlerts
 main: PopupAlerts\Main
-version: "1.4.1-3"
-api: [3.0.0]
+version: "1.4.2"
+api: 3.0.0
 load: STARTUP
 author: EvolSoft
 description: Show alerts in popups
+depend:
+  - CustomAlerts
 website: http://www.evolsoft.tk
